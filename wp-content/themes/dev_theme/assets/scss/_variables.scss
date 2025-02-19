@@ -1,0 +1,47 @@
+// Bootstrap overrides
+$grid-gutter-width: 24px !default;
+
+//grid breakpoints
+$grid-breakpoints: (
+  xs : 0,
+  sm : 480px,
+  md : 768px,
+  lg : 1200px,
+  xl : 1300px,
+  xxl : 1500px
+);
+
+$container-max-widths: (
+  md : 700px,
+  lg : 1100px,
+  xl : 1200px,
+  xxl : 1200px
+);
+
+$spacer: 1rem;
+$spacers: (
+  0: 0,
+  1: $spacer * .25,
+  2: $spacer * .5,
+  3: $spacer,
+  4: $spacer * 1.5,
+  5: $spacer * 3,
+  // Add new value
+  6: $spacer * 4,
+  7: $spacer * 5,
+  8: $spacer * 6,
+  9: $spacer * 7,
+  10: $spacer * 8,
+  section: 80px,
+);
+
+//base color
+$body: #333333;
+$primary : #22A05B; //1
+$secondary : #29C06D; //2
+$success : #30E07F; //3
+$info : #36FF92; //4
+$warning : #E74C3C; //5
+// $danger : #E74C3C; //5
+// $light : #E74C3C; //5
+// $dark : #E74C3C; //5
