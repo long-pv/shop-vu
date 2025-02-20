@@ -13,4 +13,10 @@
  * @package dev_theme
  */
 
-echo 'dev_theme';
+get_header();
+?>
+<div class="container">
+    <?php echo 'dev_theme'; ?>
+</div>
+<?php
+get_footer();

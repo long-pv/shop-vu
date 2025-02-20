@@ -1,0 +1,119 @@
+// header
+.site_header {
+    background-color: #fff;
+    border-bottom: 1px solid rgba($color: #0C68F4, $alpha: 0.3);
+}
+
+.site_header_logo {
+    display: inline-flex;
+}
+
+.site_header_inner {
+    position: relative;
+    padding-top: 18px;
+    padding-bottom: 18px;
+}
+
+.site_header_logo_img {
+    height: 40px;
+    width: auto;
+    max-width: unset;
+
+    @include media-breakpoint-up(lg) {
+        height: 60px;
+    }
+}
+
+.site_header_menu {
+    ul.menu {
+        padding: 0px;
+        margin: 0px;
+        list-style-type: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+
+        &>li {
+            display: flex;
+
+            &>a {
+                font-size: 16px;
+                font-weight: 400;
+                color: #000000;
+                text-decoration: none !important;
+                transition: all 0.3s;
+                padding: 8px;
+                border-bottom: 1px solid #fff;
+
+                &:hover {
+                    color: #0C68F4;
+                    border-bottom: 1px solid rgba($color: #0C68F4, $alpha: 0.3);
+                }
+            }
+        }
+    }
+}
+
+.site_header_action {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.site_header_action_search,
+.site_header_action_cart,
+.site_header_action_user {
+    display: inline-flex;
+    cursor: pointer;
+
+    svg {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+.site_header_user {
+    background: #fff;
+    border-radius: 0px 0px 8px 8px;
+    position: absolute;
+    top: 100%;
+    right: 0px;
+    width: 288px;
+    border: 1px solid #B4B4B4;
+    display: none;
+}
+
+.site_header_user_inner {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.site_header_user_item_text {
+    font-size: 18px;
+    color: #0C0C0C;
+    font-weight: 300;
+    transition: all 0.3s;
+}
+
+.site_header_user_item {
+    display: flex;
+    gap: 16px;
+    text-decoration: none !important;
+    align-items: center;
+
+    &:hover {
+        .site_header_user_item_text {
+            color: #0C68F4;
+        }
+
+        svg {
+            path {
+                fill: #0C68F4;
+            }
+        }
+    }
+}
