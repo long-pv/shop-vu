@@ -165,10 +165,10 @@
 						<div class="site_header_cart_mini_list">
 							<div class="site_header_cart_mini_item">
 								<div class="row">
-									<div class="col-6">
-										<img class="site_header_cart_mini_item_img" src="" alt="">
+									<div class="col-5">
+										<img class="site_header_cart_mini_item_img" src="<?php echo get_template_directory_uri() . '/assets/images/cart_mini_img.png'; ?>" alt="">
 									</div>
-									<div class="col-6">
+									<div class="col-7">
 										<div class="site_header_cart_mini_item_content">
 											<a href="#" class="site_header_cart_mini_item_title">
 												Inateck 12.3-13 Inch MacBook Case Sleeve
@@ -184,7 +184,6 @@
 													<div class="site_header_cart_mini_item_price">
 														$63.26
 													</div>
-
 												</div>
 												<div class="col-8">
 													<div class="site_header_cart_mini_item_action">
@@ -200,7 +199,7 @@
 
 														<div class="site_header_cart_mini_item_action_amount">
 															<button class="site_header_cart_mini_item_action_sub">-</button>
-															<input type="number" value="1">
+															<input class="site_header_cart_mini_item_amount" type="number" value="1">
 															<button class="site_header_cart_mini_item_action_add">+</button>
 														</div>
 													</div>
