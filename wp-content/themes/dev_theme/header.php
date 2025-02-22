@@ -63,7 +63,7 @@
 					</div>
 					<div class="col-lg-2">
 						<div class="site_header_action">
-							<div class="site_header_action_search">
+							<div class="site_header_action_search" data-bs-toggle="modal" data-bs-target="#site_header_action_search">
 								<svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 									<path d="M19.5 29C24.7467 29 29 24.7467 29 19.5C29 14.2533 24.7467 10 19.5 10C14.2533 10 10 14.2533 10 19.5C10 24.7467 14.2533 29 19.5 29Z" stroke="#0C0C0C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
 									<path d="M30 30L28 28" stroke="#0C0C0C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
@@ -163,44 +163,59 @@
 							3 items
 						</div>
 						<div class="site_header_cart_mini_list">
-							<div class="site_header_cart_mini_item">
-								<div class="row">
-									<div class="col-5">
-										<img class="site_header_cart_mini_item_img" src="<?php echo get_template_directory_uri() . '/assets/images/cart_mini_img.png'; ?>" alt="">
-									</div>
-									<div class="col-7">
-										<div class="site_header_cart_mini_item_content">
-											<a href="#" class="site_header_cart_mini_item_title">
-												Inateck 12.3-13 Inch MacBook Case Sleeve
-											</a>
-											<div class="site_header_cart_mini_item_type">
-												Black
-											</div>
-											<div class="site_header_cart_mini_item_quantity">
-												×1
-											</div>
-											<div class="row">
-												<div class="col-4">
-													<div class="site_header_cart_mini_item_price">
-														$63.26
-													</div>
+							<?php
+							for ($i = 1; $i < 5; $i++):
+							?>
+								<div class="site_header_cart_mini_item">
+									<div class="row">
+										<div class="col-5">
+											<img class="site_header_cart_mini_item_img" src="<?php echo get_template_directory_uri() . '/assets/images/cart_mini_img.png'; ?>" alt="">
+										</div>
+										<div class="col-7">
+											<div class="site_header_cart_mini_item_content">
+												<a href="#" class="site_header_cart_mini_item_title">
+													Inateck 12.3-13 Inch MacBook Case Sleeve
+												</a>
+												<div class="site_header_cart_mini_item_type">
+													Black
 												</div>
-												<div class="col-8">
-													<div class="site_header_cart_mini_item_action">
-														<div class="site_header_cart_mini_item_action_delete">
-															<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-																<path d="M14.0004 4.48657C13.9871 4.48657 13.9671 4.48657 13.9471 4.48657C10.4204 4.13324 6.90043 3.9999 3.41377 4.35324L2.05377 4.48657C1.77377 4.51324 1.5271 4.31324 1.50043 4.03324C1.47377 3.75324 1.67377 3.51324 1.9471 3.48657L3.3071 3.35324C6.85377 2.99324 10.4471 3.13324 14.0471 3.48657C14.3204 3.51324 14.5204 3.7599 14.4938 4.03324C14.4738 4.29324 14.2538 4.48657 14.0004 4.48657Z" fill="#C91433" />
-																<path d="M5.66651 3.81325C5.63984 3.81325 5.61318 3.81325 5.57984 3.80659C5.31318 3.75992 5.12651 3.49992 5.17318 3.23325L5.31984 2.35992C5.42651 1.71992 5.57318 0.833252 7.12651 0.833252H8.87318C10.4332 0.833252 10.5798 1.75325 10.6798 2.36659L10.8265 3.23325C10.8732 3.50659 10.6865 3.76659 10.4198 3.80659C10.1465 3.85325 9.88651 3.66659 9.84651 3.39992L9.69984 2.53325C9.60651 1.95325 9.58651 1.83992 8.87984 1.83992H7.13318C6.42651 1.83992 6.41318 1.93325 6.31318 2.52659L6.15984 3.39325C6.11984 3.63992 5.90651 3.81325 5.66651 3.81325Z" fill="#C91433" />
-																<path d="M10.1396 15.1667H5.85961C3.53294 15.1667 3.43961 13.8801 3.36627 12.8401L2.93294 6.12672C2.91294 5.85338 3.12627 5.61338 3.39961 5.59338C3.67961 5.58005 3.91294 5.78672 3.93294 6.06005L4.36627 12.7734C4.43961 13.7867 4.46627 14.1667 5.85961 14.1667H10.1396C11.5396 14.1667 11.5663 13.7867 11.6329 12.7734L12.0663 6.06005C12.0863 5.78672 12.3263 5.58005 12.5996 5.59338C12.8729 5.61338 13.0863 5.84672 13.0663 6.12672L12.6329 12.8401C12.5596 13.8801 12.4663 15.1667 10.1396 15.1667Z" fill="#C91433" />
-																<path d="M9.10672 11.5H6.88672C6.61339 11.5 6.38672 11.2733 6.38672 11C6.38672 10.7267 6.61339 10.5 6.88672 10.5H9.10672C9.38005 10.5 9.60672 10.7267 9.60672 11C9.60672 11.2733 9.38005 11.5 9.10672 11.5Z" fill="#C91433" />
-																<path d="M9.66634 8.83325H6.33301C6.05967 8.83325 5.83301 8.60658 5.83301 8.33325C5.83301 8.05992 6.05967 7.83325 6.33301 7.83325H9.66634C9.93967 7.83325 10.1663 8.05992 10.1663 8.33325C10.1663 8.60658 9.93967 8.83325 9.66634 8.83325Z" fill="#C91433" />
-															</svg>
+												<div class="site_header_cart_mini_item_quantity">
+													x1
+												</div>
+												<div class="row">
+													<div class="col-4">
+														<div class="site_header_cart_mini_item_price">
+															$63.26
 														</div>
+													</div>
+													<div class="col-8">
+														<div class="site_header_cart_mini_item_action">
+															<div class="site_header_cart_mini_item_action_delete">
+																<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+																	<path d="M14.0004 4.48657C13.9871 4.48657 13.9671 4.48657 13.9471 4.48657C10.4204 4.13324 6.90043 3.9999 3.41377 4.35324L2.05377 4.48657C1.77377 4.51324 1.5271 4.31324 1.50043 4.03324C1.47377 3.75324 1.67377 3.51324 1.9471 3.48657L3.3071 3.35324C6.85377 2.99324 10.4471 3.13324 14.0471 3.48657C14.3204 3.51324 14.5204 3.7599 14.4938 4.03324C14.4738 4.29324 14.2538 4.48657 14.0004 4.48657Z" fill="#C91433" />
+																	<path d="M5.66651 3.81325C5.63984 3.81325 5.61318 3.81325 5.57984 3.80659C5.31318 3.75992 5.12651 3.49992 5.17318 3.23325L5.31984 2.35992C5.42651 1.71992 5.57318 0.833252 7.12651 0.833252H8.87318C10.4332 0.833252 10.5798 1.75325 10.6798 2.36659L10.8265 3.23325C10.8732 3.50659 10.6865 3.76659 10.4198 3.80659C10.1465 3.85325 9.88651 3.66659 9.84651 3.39992L9.69984 2.53325C9.60651 1.95325 9.58651 1.83992 8.87984 1.83992H7.13318C6.42651 1.83992 6.41318 1.93325 6.31318 2.52659L6.15984 3.39325C6.11984 3.63992 5.90651 3.81325 5.66651 3.81325Z" fill="#C91433" />
+																	<path d="M10.1396 15.1667H5.85961C3.53294 15.1667 3.43961 13.8801 3.36627 12.8401L2.93294 6.12672C2.91294 5.85338 3.12627 5.61338 3.39961 5.59338C3.67961 5.58005 3.91294 5.78672 3.93294 6.06005L4.36627 12.7734C4.43961 13.7867 4.46627 14.1667 5.85961 14.1667H10.1396C11.5396 14.1667 11.5663 13.7867 11.6329 12.7734L12.0663 6.06005C12.0863 5.78672 12.3263 5.58005 12.5996 5.59338C12.8729 5.61338 13.0863 5.84672 13.0663 6.12672L12.6329 12.8401C12.5596 13.8801 12.4663 15.1667 10.1396 15.1667Z" fill="#C91433" />
+																	<path d="M9.10672 11.5H6.88672C6.61339 11.5 6.38672 11.2733 6.38672 11C6.38672 10.7267 6.61339 10.5 6.88672 10.5H9.10672C9.38005 10.5 9.60672 10.7267 9.60672 11C9.60672 11.2733 9.38005 11.5 9.10672 11.5Z" fill="#C91433" />
+																	<path d="M9.66634 8.83325H6.33301C6.05967 8.83325 5.83301 8.60658 5.83301 8.33325C5.83301 8.05992 6.05967 7.83325 6.33301 7.83325H9.66634C9.93967 7.83325 10.1663 8.05992 10.1663 8.33325C10.1663 8.60658 9.93967 8.83325 9.66634 8.83325Z" fill="#C91433" />
+																</svg>
+															</div>
 
-														<div class="site_header_cart_mini_item_action_amount">
-															<button class="site_header_cart_mini_item_action_sub">-</button>
-															<input class="site_header_cart_mini_item_amount" type="number" value="1">
-															<button class="site_header_cart_mini_item_action_add">+</button>
+															<div class="site_header_cart_mini_item_action_amount">
+																<div class="site_header_cart_mini_item_action_sub">
+																	<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+																		<path d="M12 8.5H4C3.72667 8.5 3.5 8.27333 3.5 8C3.5 7.72667 3.72667 7.5 4 7.5H12C12.2733 7.5 12.5 7.72667 12.5 8C12.5 8.27333 12.2733 8.5 12 8.5Z" fill="#717171" />
+																	</svg>
+																</div>
+																<div class="site_header_cart_mini_item_amount">
+																	1
+																</div>
+																<div class="site_header_cart_mini_item_action_add">
+																	<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+																		<path d="M12 8.5H4C3.72667 8.5 3.5 8.27333 3.5 8C3.5 7.72667 3.72667 7.5 4 7.5H12C12.2733 7.5 12.5 7.72667 12.5 8C12.5 8.27333 12.2733 8.5 12 8.5Z" fill="#717171" />
+																		<path d="M8 12.5C7.72667 12.5 7.5 12.2733 7.5 12V4C7.5 3.72667 7.72667 3.5 8 3.5C8.27333 3.5 8.5 3.72667 8.5 4V12C8.5 12.2733 8.27333 12.5 8 12.5Z" fill="#717171" />
+																	</svg>
+																</div>
+															</div>
 														</div>
 													</div>
 												</div>
@@ -208,7 +223,9 @@
 										</div>
 									</div>
 								</div>
-							</div>
+							<?php
+							endfor;
+							?>
 						</div>
 						<div class="site_header_cart_mini_footer">
 							<div class="row">
@@ -244,3 +261,12 @@
 			</div>
 		</div>
 	</header>
+
+	<!-- Modal Tìm kiếm sản phẩm -->
+	<div class="modal fade" id="site_header_action_search" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+			<div class="modal-content">
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+			</div>
+		</div>
+	</div>
