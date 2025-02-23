@@ -70,6 +70,21 @@ $recent_post = new WP_Query($args);
                         <?php $query->the_post(); ?>
                         <?php get_template_part('template-parts/content-recent_blog'); ?>
                     <?php endwhile; ?>
+                    <?php
+                    echo '<div class="pagination">';
+                    echo paginate_links(
+                        array(
+                            'total' => $query->max_num_pages,
+                            'current' => max(1, $paged),
+                            'format' => '?paging=%#%',
+                            'end_size' => 2,
+                            'mid_size' => 1,
+                            'prev_text' => __('Prev', 'basetheme'),
+                            'next_text' => __('Next', 'basetheme'),
+                        )
+                    );
+                    echo '</div>';
+                    ?>
                 <?php endif; ?>
                 <?php wp_reset_postdata(); ?>
             </div>
