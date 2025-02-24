@@ -117,3 +117,135 @@
         }
     }
 }
+
+.site_header_cart_mini {
+    background: #fff;
+    border-radius: 0px 0px 8px 8px;
+    position: absolute;
+    top: 100%;
+    right: 0px;
+    width: 512px;
+    border: 1px solid #B4B4B4;
+    overflow: hidden;
+    display: none;
+}
+
+.site_header_cart_mini_title {
+    font-size: 18px;
+    color: #000000;
+    font-weight: 300;
+    margin-bottom: 20px;
+}
+
+.site_header_cart_mini_inner {
+    padding: 24px;
+}
+
+.site_header_cart_mini_list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+    max-height: 350px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+.site_header_cart_mini_item {
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0px 2px 15px rgba($color: #717171, $alpha: 0.12);
+    padding: 10px;
+}
+
+.site_header_cart_mini_item_title {
+    color: #2D2D2D !important;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none !important;
+    display: block;
+}
+
+.site_header_cart_mini_item_type,
+.site_header_cart_mini_item_quantity {
+    color: #717171;
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.site_header_cart_mini_item_type {
+    margin-bottom: 4px;
+}
+
+.site_header_cart_mini_item_quantity {
+    margin-bottom: 14px;
+}
+
+.site_header_cart_mini_item_price {
+    font-size: 12px;
+    font-weight: 300;
+    color: #2D2D2D;
+}
+
+.site_header_cart_mini_item_action {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 8px;
+}
+
+.site_header_cart_mini_item_action_amount {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    border-bottom: 1px solid #9E9E9E;
+    padding-bottom: 2px;
+}
+
+.site_header_cart_mini_item_amount {
+    width: 30px;
+    flex-shrink: 0;
+    text-align: center;
+    color: #717171;
+    font-size: 14px;
+    font-weight: 300;
+}
+
+.site_header_cart_mini_total {
+    text-align: center;
+}
+
+.site_header_cart_mini_total_label {
+    color: #2D2D2D;
+    font-size: 14px;
+    font-weight: 300;
+    margin-bottom: 4px;
+}
+
+.site_header_cart_mini_total_price {
+    color: #2D2D2D;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.site_header_cart_mini_checkout {
+    padding: 12px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #0C68F4;
+    border-radius: 8px;
+    gap: 8px;
+    text-decoration: none !important;
+}
+
+.site_header_cart_mini_checkout_text {
+    color: #fff;
+    font-size: 18px;
+}
+
+.site_header_cart_mini_checkout_icon {
+    display: inline-flex;
+}
