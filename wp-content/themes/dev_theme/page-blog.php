@@ -26,7 +26,8 @@ $paged = !empty($_GET['paging']) ? intval($_GET['paging']) : 1;
 
 $args = array(
     'post_type' => 'post',
-    'posts_per_page' => 4 // Đúng
+    'posts_per_page' => 4,
+    'paged' => $paged, // Thêm dòng này
 );
 
 $query = new WP_Query($args);
@@ -35,16 +36,18 @@ $query = new WP_Query($args);
 <div class="container">
     <div class="row">
         <div class="col-12 col-md-8 col-lg-8">
-            <div class="row row_inner">
-                <?php if ($query && $query->have_posts()): ?>
-                    <?php while ($query->have_posts()): ?>
-                        <?php $query->the_post(); ?>
-                        <div class="col-12 col-md-6 col-lg-6">
-                            <?php get_template_part('template-parts/content-blog'); ?>
-                        </div>
-                    <?php endwhile; ?>
-                <?php endif; ?>
-                <?php wp_reset_postdata(); ?>
+            <div class="blog_list">
+                <div class="row row_inner">
+                    <?php if ($query && $query->have_posts()): ?>
+                        <?php while ($query->have_posts()): ?>
+                            <?php $query->the_post(); ?>
+                            <div class="col-12 col-md-6 col-lg-6">
+                                <?php get_template_part('template-parts/content-blog'); ?>
+                            </div>
+                        <?php endwhile; ?>
+                    <?php endif; ?>
+                    <?php wp_reset_postdata(); ?>
+                </div>
             </div>
         </div>
         <div class="col-12 col-md-4 col-lg-4">
@@ -59,12 +62,12 @@ $query = new WP_Query($args);
     </div>
 </div>
 <?php
-$args = array(
+$args_recent = array(
     'post_type' => 'post',
     'posts_per_page' => 4 // Đúng
 );
 
-$recent_post = new WP_Query($args);
+$recent_post = new WP_Query($args_recent);
 ?>
 
 <div class="container">

@@ -58,7 +58,7 @@
 			flex-direction: column;
 			// gap: 8px;
 			//
-			padding: 30px 12px 30px 0px;
+			padding: 0px 12px 0px 0px;
 
 			.recent_post_item_content_title {
 				text-decoration: none;
@@ -78,6 +78,18 @@
 						color: $secondary;
 					}
 				}
+			}
+
+			.recent_post_item_content_desc {
+				// Typhoraphy
+				font-weight: 300;
+				font-size: 14px;
+
+				// Color
+				color: #717171;
+
+				// Margin
+				margin-bottom: 16px;
 			}
 
 			.recent_post_item_content_meta {

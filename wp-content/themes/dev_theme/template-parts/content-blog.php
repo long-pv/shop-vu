@@ -59,7 +59,10 @@
             </div>
         </div>
         <a href="<?php the_permalink() ?>" class="d-flex blogItem_content_title">
-            <h2 class="line-2"><?php the_title(); ?></h2>
+            <h2 class="line-1"><?php the_title(); ?></h2>
         </a>
+        <div class="blogItem_content_desc line-2">
+            <?php the_content(); ?>
+        </div>
     </div>
 </div>

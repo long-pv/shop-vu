@@ -1,3 +1,11 @@
+.blog_list {
+	margin-bottom: 40px;
+
+	@include media-breakpoint-up(lg) {
+		margin-bottom: 48px;
+	}
+}
+
 .row_inner {
 	row-gap: 24px;
 }
@@ -70,12 +78,26 @@
 			text-decoration: none;
 
 			h2 {
+				// Typhoraphy
+				font-weight: 500;
+				font-size: 20px;
+
+				// Color
 				color: #0c0c0c;
+
+				// Margin
+				margin-bottom: 0px;
 
 				&:hover {
 					color: $secondary;
 				}
 			}
+		}
+
+		//
+		.blogItem_content_desc {
+			font-weight: 300;
+			font-size: 16px;
 		}
 	}
 }
