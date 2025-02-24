@@ -1,0 +1,51 @@
+.post_categories {
+	margin-top: 40px;
+	margin-bottom: 40px;
+
+	@include media-breakpoint-up(lg) {
+		margin-top: 85px;
+		margin-bottom: 48px;
+	}
+
+	.post_categories_title {
+		// Typhoraphy
+		font-weight: 500;
+		font-size: 20px;
+
+		// Color
+		color: $black;
+
+		// Margin
+		margin-bottom: 24px;
+	}
+
+	.post_categories_content {
+		// Flex Box
+		display: flex;
+		flex-direction: column;
+		row-gap: 16px;
+	}
+
+	.post_categories_item {
+		// Flex Box
+		display: flex;
+
+		// Text
+		text-decoration: none;
+
+		// Color
+		color: $black;
+
+		// Typhoraphy
+		font-weight: 300;
+		font-size: 20px;
+
+		&:hover {
+			// Text
+			text-decoration: underline;
+
+			// Color
+			color: $secondary;
+		}
+	}
+}

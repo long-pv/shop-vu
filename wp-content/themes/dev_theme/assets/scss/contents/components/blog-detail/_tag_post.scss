@@ -1,0 +1,39 @@
+.tag_post {
+	margin-bottom: 40px;
+
+	@include media-breakpoint-up(lg) {
+		margin-bottom: 48px;
+	}
+
+	.tag_post_title {
+		// Typhoraphy
+		font-weight: 500;
+		font-size: 20px;
+
+		// Color
+		color: $black;
+
+		// Margin
+		margin-bottom: 24px;
+	}
+
+	.tag_item {
+		// Flex Box
+		display: inline-flex;
+
+		// Text
+		text-decoration: none;
+
+		// Padding
+		padding: 14px 20px;
+
+		// Border
+		border-radius: 8px;
+		border: 2px $primary solid;
+
+		&:hover {
+			color: #052e6d;
+			border: 2px #052e6d solid;
+		}
+	}
+}
