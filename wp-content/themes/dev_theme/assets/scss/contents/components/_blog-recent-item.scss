@@ -1,0 +1,24 @@
+.recent_post_title {
+	// Margin
+	margin-bottom: 24px;
+
+	// Typoraphy
+	font-family: "Inter";
+	font-weight: 500;
+	font-size: 24px;
+	color: #0c0c0c;
+
+	@include media-breakpoint-up(lg) {
+		margin-bottom: 32px;
+	}
+}
+
+.recent_post_item {
+	display: flex;
+	flex-direction: column;
+	row-gap: 24px;
+
+	.blogItem_content {
+		padding: 30px 12px 30px 0px;
+	}
+}
