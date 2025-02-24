@@ -21,8 +21,9 @@ get_header();
     <?php wp_breadcrumbs(); ?>
 </div>
 
-
 <?php
+$paged = !empty($_GET['paging']) ? intval($_GET['paging']) : 1;
+
 $args = array(
     'post_type' => 'post',
     'posts_per_page' => 4 // Đúng
@@ -46,7 +47,15 @@ $query = new WP_Query($args);
                 <?php wp_reset_postdata(); ?>
             </div>
         </div>
-        <div class="col-12 col-md-4 col-lg-4"></div>
+        <div class="col-12 col-md-4 col-lg-4">
+            <h2>Videos</h2>
+            <div class="video-card">
+                <img src="Videos card.png" alt="Video Thumbnail">
+                <video src="video.mp4" muted loop></video>
+                <div class="play-button"></div>
+                <div class="overlay">How to connect your iPhone to a laptop?</div>
+            </div>
+        </div>
     </div>
 </div>
 <?php
@@ -59,37 +68,41 @@ $recent_post = new WP_Query($args);
 ?>
 
 <div class="container">
-    <h2 class="recent_post_title">
-        Recent Posts
-    </h2>
-    <div class="row">
-        <div class="col-7">
-            <div class="recent_post_item">
-                <?php if ($query && $query->have_posts()): ?>
-                    <?php while ($query->have_posts()): ?>
-                        <?php $query->the_post(); ?>
-                        <?php get_template_part('template-parts/content-recent_blog'); ?>
-                    <?php endwhile; ?>
-                    <?php
-                    echo '<div class="pagination">';
-                    echo paginate_links(
-                        array(
-                            'total' => $query->max_num_pages,
-                            'current' => max(1, $paged),
-                            'format' => '?paging=%#%',
-                            'end_size' => 2,
-                            'mid_size' => 1,
-                            'prev_text' => __('Prev', 'basetheme'),
-                            'next_text' => __('Next', 'basetheme'),
-                        )
-                    );
-                    echo '</div>';
-                    ?>
-                <?php endif; ?>
-                <?php wp_reset_postdata(); ?>
+    <div class="recent_post">
+        <h2 class="recent_post_title">
+            Recent Posts
+        </h2>
+        <div class="row">
+            <div class="col-7">
+                <div class="recent_post_item_inner">
+                    <?php if ($recent_post && $recent_post->have_posts()): ?>
+                        <?php while ($recent_post->have_posts()): ?>
+                            <?php $recent_post->the_post(); ?>
+                            <?php get_template_part('template-parts/content-recent_blog'); ?>
+                        <?php endwhile; ?>
+                    <?php endif; ?>
+                    <?php wp_reset_postdata(); ?>
+                </div>
             </div>
         </div>
     </div>
+
+    <!--  -->
+    <?php
+    echo '<div class="pagination">';
+    echo paginate_links(
+        array(
+            'total' => $query->max_num_pages,
+            'current' => max(1, $paged),
+            'format' => '?paging=%#%',
+            'end_size' => 2,
+            'mid_size' => 1,
+            'prev_text' => __('', 'basetheme'),
+            'next_text' => __('', 'basetheme'),
+        )
+    );
+    echo '</div>';
+    ?>
 </div>
 
 <?php

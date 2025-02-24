@@ -161,6 +161,8 @@ add_action('wp_enqueue_scripts', 'dev_theme_scripts');
  */
 require get_template_directory() . '/inc/template-functions.php';
 require get_template_directory() . '/inc/breadcrumbs.php';
+// like_post
+require get_template_directory() . '/inc/like_post.php';
 
 /**
  * Load WooCommerce compatibility file.

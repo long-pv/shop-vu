@@ -1,19 +1,19 @@
-<div class="blogItem">
-    <div class="row">
+<div class="recent_post_item">
+    <div class="row recent_post_item_row">
         <div class="col-4">
-            <div class="blogItem_thumbnail">
-                <a href="<?php the_permalink(); ?>" class="blogItem_link">
+            <div class="recent_post_item_thumbnail">
+                <a href="<?php the_permalink(); ?>" class="recent_post_item_link">
                     <?php echo get_the_post_thumbnail(); ?>
                 </a>
             </div>
         </div>
         <div class="col-8">
-            <div class="blogItem_content">
-                <a href="<?php the_permalink() ?>" class="d-flex blogItem_content_title">
+            <div class="recent_post_item_content">
+                <a href="<?php the_permalink() ?>" class="d-flex recent_post_item_content_title">
                     <h2 class="line-2"><?php the_title(); ?></h2>
                 </a>
-                <div class="row blogItem_content_meta">
-                    <div class="col-6 blogItem_meta blogItem_content_meta--date">
+                <div class="row recent_post_item_content_meta">
+                    <div class="col-6 recent_post_item_meta recent_post_item_content_meta--date">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M6.66699 4.79175C6.32533 4.79175 6.04199 4.50841 6.04199 4.16675V1.66675C6.04199 1.32508 6.32533 1.04175 6.66699 1.04175C7.00866 1.04175 7.29199 1.32508 7.29199 1.66675V4.16675C7.29199 4.50841 7.00866 4.79175 6.66699 4.79175Z"
@@ -49,7 +49,7 @@
                         <span><?php echo get_the_date('F , j , Y');
                         ?></span>
                     </div>
-                    <div class="col-6 blogItem_meta blogItem_content_meta--time">
+                    <div class="col-6 recent_post_item_meta recent_post_item_content_meta--time">
                         <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M9.99967 18.9583C5.63301 18.9583 2.08301 15.4083 2.08301 11.0417C2.08301 6.675 5.63301 3.125 9.99967 3.125C14.3663 3.125 17.9163 6.675 17.9163 11.0417C17.9163 15.4083 14.3663 18.9583 9.99967 18.9583ZM9.99967 4.375C6.32467 4.375 3.33301 7.36667 3.33301 11.0417C3.33301 14.7167 6.32467 17.7083 9.99967 17.7083C13.6747 17.7083 16.6663 14.7167 16.6663 11.0417C16.6663 7.36667 13.6747 4.375 9.99967 4.375Z"

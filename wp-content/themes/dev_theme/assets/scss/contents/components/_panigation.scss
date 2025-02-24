@@ -1,25 +1,61 @@
 .pagination,
 .woocommerce-pagination {
+	// Flex
 	justify-content: center;
 	align-items: center;
+	gap: 8px;
+
+	// Margin
 	margin-top: 24px;
+	margin-bottom: 32px;
+
+	@include media-breakpoint-up(lg) {
+		margin-bottom: 56px;
+	}
 
 	.page-numbers {
-		padding: 5px 12px;
+		// Padding
+		padding: 12px 18px;
+		//
 		font-weight: 700;
-		color: $primary !important;
+		color: $black !important;
 		text-decoration: none;
 		font-size: 14px;
 
+		&:not(.current):hover {
+			//Border
+			border-bottom: 1px $primary solid;
+			// border-radius: 4px;
+
+			// Colors
+			color: $primary !important;
+		}
+
 		&.current {
-			background: $primary;
-			border-radius: 4px;
-			color: $white !important;
+			// Background
+			// background: $primary;
+
+			//Border
+			border-bottom: 1px $primary solid;
+			// border-radius: 4px;
+
+			// Colors
+			color: $primary !important;
 		}
 
 		&.next,
 		&.prev {
 			padding: 0;
+			// content: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' width='24' height='25' viewBox='0 0 24 25' fill='none'%3e%3cpath d='M15 17.5L10.4068 13.3838C9.86439 12.8977 9.86439 12.1023 10.4068 11.6161L15 7.49998' stroke='%23C0C0C0' stroke-width='1.5' stroke-miterlimit='10' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+			content: url("data:image/svg+xml,%3Csvg width='24' height='25' viewBox='0 0 24 25' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M14.4301 19.32C14.2401 19.32 14.0501 19.25 13.9001 19.1C13.6101 18.81 13.6101 18.33 13.9001 18.04L19.4401 12.5L13.9001 6.96C13.6101 6.67 13.6101 6.19 13.9001 5.9C14.1901 5.61 14.6701 5.61 14.9601 5.9L21.0301 11.97C21.3201 12.26 21.3201 12.74 21.0301 13.03L14.9601 19.1C14.8101 19.25 14.6201 19.32 14.4301 19.32Z' fill='%230C0C0C'/%3E%3Cpath d='M20.33 13.25H3.5C3.09 13.25 2.75 12.91 2.75 12.5C2.75 12.09 3.09 11.75 3.5 11.75H20.33C20.74 11.75 21.08 12.09 21.08 12.5C21.08 12.91 20.74 13.25 20.33 13.25Z' fill='%230C0C0C'/%3E%3C/svg%3E%0A");
+
+			//
+			width: 24px;
+			height: 24px;
+			min-height: 24px;
+
+			// Margin
+			// margin-right: 8px;
 
 			&:hover {
 				background: transparent;
