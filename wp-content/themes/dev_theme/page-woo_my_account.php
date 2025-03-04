@@ -1,6 +1,7 @@
 <?php
 
 /**
+ * Template name: Woo My Account
  * The template for displaying all pages
  *
  * This is the template that displays all pages by default.
@@ -17,7 +18,7 @@ get_header();
 ?>
 <div class="container">
     <div class="py-section">
-        <?php the_content(); ?>
+        <?php echo do_shortcode('[woocommerce_my_account]'); ?>
     </div>
 </div>
 <?php
