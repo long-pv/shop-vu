@@ -15,9 +15,11 @@
 
 get_header();
 ?>
-<div class="container">
-    <div class="py-section">
-        <?php the_content(); ?>
+<div class="py-section">
+    <div class="container">
+        <div class="editor">
+            <?php the_content(); ?>
+        </div>
     </div>
 </div>
 <?php

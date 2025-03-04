@@ -16,8 +16,8 @@
 
 get_header();
 ?>
-<div class="container">
-    <div class="py-section">
+<div class="py-section">
+    <div class="container">
         <?php echo do_shortcode('[woocommerce_my_account]'); ?>
     </div>
 </div>

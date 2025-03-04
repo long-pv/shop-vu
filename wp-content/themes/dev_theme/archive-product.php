@@ -129,9 +129,7 @@ $query = new WP_Query($args);
                                 $query->the_post(); ?>
 
                                 <div class="col-lg-4 col-md-6">
-                                    <?php
-                                    echo get_product_card_html();
-                                    ?>
+                                    <?php echo get_product_card_html(); ?>
                                 </div>
                             <?php
                             endwhile;

@@ -92,6 +92,7 @@ function get_product_card_html($product_id = null)
 <?php
 	return ob_get_clean();
 }
+// end
 
 // sidebar filter
 function woo_filter_sidebar()
@@ -258,5 +259,86 @@ function woo_filter_sidebar()
 			</div>
 		</form>
 	</div>
-<?php
+	<?php
 }
+// end
+
+// xóa bài viết liên quan mặc định trong woo và tạo mới chúng theo ý muốn
+remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_related_products', 20);
+function custom_related_products_section()
+{
+	global $product;
+
+	if (!$product) return;
+
+	// Lấy danh mục của sản phẩm hiện tại
+	$terms = wp_get_post_terms($product->get_id(), 'product_cat', array('fields' => 'ids'));
+
+	if (empty($terms)) return;
+
+	// Query sản phẩm cùng danh mục
+	$args = array(
+		'post_type'      => 'product',
+		'posts_per_page' => 4, // Hiển thị 4 sản phẩm
+		'post__not_in'   => array($product->get_id()), // Loại bỏ sản phẩm hiện tại
+		'tax_query'      => array(
+			array(
+				'taxonomy' => 'product_cat',
+				'field'    => 'id',
+				'terms'    => $terms,
+			),
+		),
+	);
+
+	$related_products = new WP_Query($args);
+
+	if ($related_products->have_posts()) {
+	?>
+		<div class="pt-5">
+			<h2>Sản phẩm liên quan</h2>
+			<div class="row">
+				<?php
+				while ($related_products->have_posts()) {
+					$related_products->the_post();
+					global $product;
+				?>
+					<div class="col-lg-3">
+						<?php echo get_product_card_html(); ?>
+					</div>
+				<?php
+				}
+				?>
+			</div>
+		</div>
+<?php
+	}
+	wp_reset_postdata();
+}
+add_action('woocommerce_after_single_product_summary', 'custom_related_products_section', 20);
+// end
+
+// hook thêm div container bootstrap cho trang woo
+function add_container_start_single_product()
+{
+	echo '<div class="py-section">';
+	echo '<div class="container">';
+}
+add_action('woocommerce_before_main_content', 'add_container_start_single_product', 1);
+function add_container_end_single_product()
+{
+	echo '</div>';
+	echo '</div>';
+}
+add_action('woocommerce_after_main_content', 'add_container_end_single_product', 99);
+// end
+
+// xóa breadcrumb mặc định của Woo và thay thế bằng function tự code
+remove_action('woocommerce_before_main_content', 'woocommerce_breadcrumb', 20);
+function custom_breadcrumb_woo()
+{
+	if (is_product()) {
+		wp_breadcrumbs();
+	}
+}
+add_action('woocommerce_before_main_content', 'custom_breadcrumb_woo', 20);
+// end
