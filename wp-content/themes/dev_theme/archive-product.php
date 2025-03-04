@@ -112,14 +112,14 @@ $query = new WP_Query($args);
             <?php echo $query->found_posts; ?> kết quả
         </div>
 
+        <div class="archive_product_ordering">
+            <?php woocommerce_catalog_ordering(); ?>
+        </div>
+
         <div class="archive_product_list">
-
-
             <div class="row">
                 <div class="col-lg-3">
-                    <?php
-                    //get_template_part('template-parts/sidebar-product'); 
-                    ?>
+                    <?php woo_filter_sidebar(); ?>
                 </div>
                 <div class="col-lg-9">
                     <?php if ($query->have_posts()) : ?>
