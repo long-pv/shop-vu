@@ -342,3 +342,36 @@ function custom_breadcrumb_woo()
 }
 add_action('woocommerce_before_main_content', 'custom_breadcrumb_woo', 20);
 // end
+
+// thêm row col cho phần hình ảnh và thông tin sản phẩm
+// function add_bootstrap_row_start()
+// {
+// 	echo '<div class="row">';
+// }
+// add_action('woocommerce_before_single_product_summary', 'add_bootstrap_row_start', 0);
+// function add_bootstrap_col_image_start()
+// {
+// 	echo '<div class="col-lg-6">';
+// }
+// add_action('woocommerce_before_single_product_summary', 'add_bootstrap_col_image_start', 5);
+// function add_bootstrap_col_image_end()
+// {
+// 	echo '</div>'; // Đóng col-lg-6 cho ảnh
+// }
+// add_action('woocommerce_before_single_product_summary', 'add_bootstrap_col_image_end', 25);
+// function add_bootstrap_col_summary_start()
+// {
+// 	echo '<div class="col-lg-6">';
+// }
+// add_action('woocommerce_before_single_product_summary', 'add_bootstrap_col_summary_start', 30);
+// function add_bootstrap_col_summary_end()
+// {
+// 	echo '</div>'; // Đóng col-lg-6 cho nội dung
+// }
+// add_action('woocommerce_after_single_product_summary', 'add_bootstrap_col_summary_end', 5);
+// function add_bootstrap_row_end()
+// {
+// 	echo '</div>'; // Đóng row
+// }
+// add_action('woocommerce_after_single_product_summary', 'add_bootstrap_row_end', 10);
+// end
