@@ -377,7 +377,7 @@ add_action('woocommerce_before_main_content', 'custom_breadcrumb_woo', 20);
 // end
 
 // hook thêm điều kiện cho việc tính phí shipping
-add_action('woocommerce_cart_calculate_fees', 'custom_shipping_fee_based_on_location');
+add_action('woocommerce_cart_calculate_fees', 'custom_shipping_fee_based_on_location', 99);
 function custom_shipping_fee_based_on_location($cart_object)
 {
 	// tránh bị tấn công
@@ -447,18 +447,9 @@ function select_province_and_district_vietnam_checkout()
 				var wards = $("#billing_address_2");
 
 				// Áp dụng Select2 để giao diện đẹp hơn
-				citis.select2({
-					placeholder: "Chọn tỉnh/thành",
-					width: '100%'
-				});
-				districts.select2({
-					placeholder: "Chọn quận/huyện",
-					width: '100%'
-				});
-				wards.select2({
-					placeholder: "Chọn phường/xã",
-					width: '100%'
-				});
+				citis.select2();
+				districts.select2();
+				wards.select2();
 
 				<?php
 				// Đường dẫn file JSON trong theme
@@ -520,18 +511,55 @@ function select_province_and_district_vietnam_checkout()
 				}
 			});
 		</script>
-<?php
+	<?php
 	}
 }
-add_action('wp_footer', 'select_province_and_district_vietnam_checkout');
+add_action('wp_footer', 'select_province_and_district_vietnam_checkout', 99);
 // end
 
 // hiển thị duy nhất 1 quốc gia
-add_filter('woocommerce_countries', 'custom_allowed_countries');
+add_filter('woocommerce_countries', 'custom_allowed_countries', 99);
 function custom_allowed_countries($countries)
 {
 	return array(
 		'VN' => __('Việt Nam', 'woocommerce'), // Việt Nam
 	);
+}
+// end
+
+// Trường billing_address_2 thay đổi thành bắt buộc và có thêm label
+add_filter('woocommerce_checkout_fields', 'customize_billing_address_2', 999);
+function customize_billing_address_2($fields)
+{
+	// khai báo text label và trạng thái required
+	if (!empty($fields['billing']['billing_address_2'])) {
+		$fields['billing']['billing_address_2'] = array(
+			'label'       => __('Ward / Commune', 'woocommerce'),
+			'required'    => true,
+		);
+	}
+	return $fields;
+}
+// end
+
+// Thêm checkbox đồng ý điều khoản trước khi đặt hàng
+add_action('woocommerce_review_order_before_submit', 'custom_add_terms_checkbox', 99);
+function custom_add_terms_checkbox()
+{
+	?>
+	<p class="form-row validate-required" id="custom_terms_field" data-priority="90">
+		<label class="woocommerce-form__label woocommerce-form__label-for-checkbox checkbox">
+			<input type="checkbox" class="woocommerce-form__input woocommerce-form__input-checkbox" name="custom_terms_checkbox" id="custom_terms_checkbox">
+			<span>Tôi đồng ý với <a href="#" target="_blank">điều khoản</a>.</span>
+		</label>
+	</p>
+<?php
+}
+add_action('woocommerce_checkout_process', 'custom_validate_terms_checkbox', 99);
+function custom_validate_terms_checkbox()
+{
+	if (!isset($_POST['custom_terms_checkbox'])) {
+		wc_add_notice(__('<strong>Điều khoản</strong> là một trường bắt buộc.', 'woocommerce'), 'error', array('id' => 'custom_terms_field'));
+	}
 }
 // end
