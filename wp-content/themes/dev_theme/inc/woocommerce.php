@@ -460,18 +460,13 @@ function select_province_and_district_vietnam_checkout()
 					width: '100%'
 				});
 
-				// Gọi API lấy dữ liệu tỉnh/thành
-				$.ajax({
-					url: "https://raw.githubusercontent.com/kenzouno1/DiaGioiHanhChinhVN/master/data.json",
-					method: "GET",
-					dataType: "json",
-					success: function(data) {
-						renderCity(data);
-					},
-					error: function() {
-						console.log("Không thể tải dữ liệu địa lý!");
-					}
-				});
+				<?php
+				// Đường dẫn file JSON trong theme
+				$json_path = get_template_directory() . '/inc/json/city_vn.json';
+				$json_data = file_get_contents($json_path);
+				?>
+				var data_city = <?php echo $json_data; ?>;
+				renderCity(data_city);
 
 				function renderCity(data) {
 					citis.empty().append('<option value="">Chọn tỉnh/thành</option>');
@@ -529,4 +524,14 @@ function select_province_and_district_vietnam_checkout()
 	}
 }
 add_action('wp_footer', 'select_province_and_district_vietnam_checkout');
+// end
+
+// hiển thị duy nhất 1 quốc gia
+add_filter('woocommerce_countries', 'custom_allowed_countries');
+function custom_allowed_countries($countries)
+{
+	return array(
+		'VN' => __('Việt Nam', 'woocommerce'), // Việt Nam
+	);
+}
 // end
