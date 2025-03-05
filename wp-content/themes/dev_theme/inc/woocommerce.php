@@ -375,3 +375,46 @@ add_action('woocommerce_before_main_content', 'custom_breadcrumb_woo', 20);
 // }
 // add_action('woocommerce_after_single_product_summary', 'add_bootstrap_row_end', 10);
 // end
+
+// hook thêm điều kiện cho việc tính phí shipping
+add_action('woocommerce_cart_calculate_fees', 'custom_shipping_fee_based_on_location');
+function custom_shipping_fee_based_on_location($cart_object)
+{
+	if (is_admin() && !defined('DOING_AJAX')) {
+		return;
+	}
+
+	// Lấy thông tin địa chỉ khách hàng
+	$customer_country = WC()->customer->get_billing_country(); // Quốc gia
+	$customer_city    = WC()->customer->get_billing_city();    // Hà Nội, TP.HCM
+	$customer_state   = WC()->customer->get_billing_state();   // Quận/huyện
+
+	// Nếu khách không ở Việt Nam => phí ship 200$
+	if ($customer_country != 'VN') {
+		$cart_object->add_fee(__('Phí vận chuyển quốc tế', 'woocommerce'), 200, false);
+		return; // Không kiểm tra tiếp các điều kiện khác
+	}
+
+	// Danh sách quận trung tâm của Hà Nội và TP.HCM
+	$hn_central_districts = ['Ba Đình', 'Hoàn Kiếm'];
+	$hcm_central_districts = ['Quận 1', 'Quận 2'];
+
+	// Mặc định phí ship
+	$shipping_fee = 10; // Các tỉnh thành khác: 10$
+
+	// Nếu khách ở Hà Nội hoặc TP.HCM
+	if ($customer_city == 'Hà Nội' || $customer_city == 'HCM') {
+		$shipping_fee = 5; // Mặc định phí ship nội thành
+
+		// Nếu khách ở quận trung tâm
+		if (
+			($customer_city == 'Hà Nội' && in_array($customer_state, $hn_central_districts)) ||
+			($customer_city == 'TP.HCM' && in_array($customer_state, $hcm_central_districts))
+		) {
+			$shipping_fee = 3; // Phí thấp hơn nếu ở quận trung tâm
+		}
+	}
+
+	// Áp dụng phí vào giỏ hàng
+	$cart_object->add_fee(__('Phí vận chuyển', 'woocommerce'), $shipping_fee, false);
+}
