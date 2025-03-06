@@ -436,20 +436,25 @@ function select_province_and_district_vietnam_checkout()
 				var districtInput = $("#billing_address_1");
 				var wardInput = $("#billing_address_2");
 
+				// lấy giá trị của input
+				var cityValue = $("#billing_city").val();
+				var districtValue = $("#billing_address_1").val();
+				var wardValue = $("#billing_address_2").val();
+
 				// Thay thế input bằng select
 				cityInput.replaceWith('<select name="billing_city" id="billing_city" class="select2"><option value="">Chọn tỉnh/thành</option></select>');
 				districtInput.replaceWith('<select name="billing_address_1" id="billing_address_1" class="select2"><option value="">Chọn quận/huyện</option></select>');
 				wardInput.replaceWith('<select name="billing_address_2" id="billing_address_2" class="select2"><option value="">Chọn phường/xã</option></select>');
 
 				// Gán lại biến sau khi thay thế
-				var citis = $("#billing_city");
-				var districts = $("#billing_address_1");
-				var wards = $("#billing_address_2");
+				var citis_select = $("#billing_city");
+				var districts_select = $("#billing_address_1");
+				var wards_select = $("#billing_address_2");
 
 				// Áp dụng Select2 để giao diện đẹp hơn
-				citis.select2();
-				districts.select2();
-				wards.select2();
+				citis_select.select2();
+				districts_select.select2();
+				wards_select.select2();
 
 				<?php
 				// Đường dẫn file JSON trong theme
@@ -460,6 +465,10 @@ function select_province_and_district_vietnam_checkout()
 				renderCity(data_city);
 
 				function renderCity(data) {
+					var citis = $("#billing_city");
+					var districts = $("#billing_address_1");
+					var wards = $("#billing_address_2");
+
 					citis.empty().append('<option value="">Chọn tỉnh/thành</option>');
 					districts.empty().append('<option value="">Chọn quận/huyện</option>');
 					wards.empty().append('<option value="">Chọn phường/xã</option>');
@@ -468,11 +477,15 @@ function select_province_and_district_vietnam_checkout()
 						citis.append($('<option>', {
 							value: item.Name,
 							text: item.Name,
-							'data-id': item.Id
+							'data-id': item.Id,
+							selected: (cityValue && cityValue == item.Name),
 						}));
 					});
+					setTimeout(function() {
+						citis.val(cityValue).trigger('change');
+					}, 500);
 
-					citis.change(function() {
+					citis.on('change', function() {
 						var cityID = $(this).find(':selected').data("id");
 						districts.empty().append('<option value="">Chọn quận/huyện</option>');
 						wards.empty().append('<option value="">Chọn phường/xã</option>');
@@ -483,6 +496,7 @@ function select_province_and_district_vietnam_checkout()
 								districts.append($('<option>', {
 									value: item.Name,
 									text: item.Name,
+									selected: (districtValue && districtValue == item.Name),
 									'data-id': item.Id
 								}));
 							});
@@ -490,7 +504,7 @@ function select_province_and_district_vietnam_checkout()
 						districts.trigger('change'); // Cập nhật select2
 					});
 
-					districts.change(function() {
+					districts.on('change', function() {
 						var districtID = $(this).find(':selected').data("id");
 						wards.empty().append('<option value="">Chọn phường/xã</option>');
 
@@ -502,7 +516,8 @@ function select_province_and_district_vietnam_checkout()
 							$.each(selectedDistrict.Wards, function(index, item) {
 								wards.append($('<option>', {
 									value: item.Name,
-									text: item.Name
+									text: item.Name,
+									selected: (wardValue && wardValue == item.Name),
 								}));
 							});
 						}
