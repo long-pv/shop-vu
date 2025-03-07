@@ -28,8 +28,17 @@ function wp_breadcrumbs()
 
 		switch (true) {
 			case is_category() || is_archive():
-				$cat_obj = get_queried_object();
-				echo $before . $cat_obj->name . $after;
+				if (is_shop()) {
+					$shop_page_id = wc_get_page_id('shop');
+					if ($shop_page_id) {
+						$shop_page_title = get_the_title($shop_page_id);
+						echo $before . 'Shop' . $after;
+					}
+				} else {
+					$cat_obj = get_queried_object();
+					echo $before . $cat_obj->name . $after;
+				}
+
 				break;
 
 			case is_single() && !is_attachment():
@@ -45,11 +54,11 @@ function wp_breadcrumbs()
 				}
 
 				if ($post_type == 'product') {
-					$categories = get_the_terms($post->ID, 'product_cat');
-
-					if (!empty($categories)) {
-						$first_category = $categories[0];
-						echo '<a aria-label="' . $first_category->name . '" href="' . get_term_link($first_category->term_id, 'product_cat') . '">' . $first_category->name . '</a>' . $delimiter . ' ';
+					$shop_page_id = wc_get_page_id('shop');
+					if ($shop_page_id) {
+						$shop_page_url = get_permalink($shop_page_id);
+						$shop_page_title = get_the_title($shop_page_id);
+						echo '<a aria-label="' . esc_attr($shop_page_title) . '" href="' . esc_url($shop_page_url) . '">' . esc_html($shop_page_title) . '</a>' . $delimiter . ' ';
 					}
 				}
 
