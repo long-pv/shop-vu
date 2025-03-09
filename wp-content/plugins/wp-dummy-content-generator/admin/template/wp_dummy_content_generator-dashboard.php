@@ -27,7 +27,7 @@
 			<div class="col wp_dummy_content_generator-col wp_dummy_content_generatorPanelWrapper">
 				<div class="wp_dummy_content_generatorPanelHeading">Woocommerce products</div>
 				<div class="wp_dummy_content_generatorPanelBody">
-					<p>Woocommerce dummy products are very important for e-commerce theme development. You can generate n number of woocommerce products using this plugin.</p>
+					<p>Woocommerce products are very important for e-commerce theme development. You can generate n number of woocommerce products using this plugin.</p>
 					<p class="wp_dummy_content_generatorLinkWrapper">
 						<a href="?page=wp_dummy_content_generator-products">Generate products</a>
 					</p>
