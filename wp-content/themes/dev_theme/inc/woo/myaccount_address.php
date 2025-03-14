@@ -1,11 +1,6 @@
 <?php
 remove_action('woocommerce_account_edit-address_endpoint', 'woocommerce_account_edit_address');
 add_action('woocommerce_account_edit-address_endpoint', function () {
-    if (!is_user_logged_in()) {
-        wp_safe_redirect(wc_get_page_permalink('myaccount'));
-        exit;
-    }
-
     $user_id = get_current_user_id();
     $billing_address_1 = get_user_meta($user_id, 'billing_address_1', true);
     $billing_address_2 = get_user_meta($user_id, 'billing_address_2', true);
